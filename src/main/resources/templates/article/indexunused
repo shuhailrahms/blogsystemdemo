@@ -1,0 +1,46 @@
+<#import "../common/standardPage.ftl" as p>
+
+<@p.page title="Posts">
+    <!--Post Content Column -->
+    <div class="col-lg-8">
+        <#if message??>
+        <div id="success-alert" class="alert alert-success">
+            ${message}
+        </div>
+        <script type="text/javascript">
+            $ { document }.ready(function() {
+                $("#success-alert"}.fadeTo(2000, 500).slideUp(500,
+                function(){
+                $("#success-alert").slideUp(500);
+                });
+            });
+        </script>
+        </#if>
+
+        <#if articles??>
+            <#list articles.content as article>
+            <!-- Title -->
+            <h1 class="mt-4">
+                <a href="/article/show/${article.link}">${article.title}</a>
+            </h1>
+
+            <!-- Author -->
+            <p class="lead">
+                by
+                <#if article.author??>
+                <a href="#">${article.author.username}</a>
+                <#else>
+                Anonymous
+                </#if>
+            </p>
+
+            <hr>
+            <!-- Date / Time -->
+            <p>Posted on ${article.createdDate?string('dd.MM.yyyy HH:mm:ss')}</p>
+            <p>${article.summary}</p>
+
+            <#if article.author?? && user??>
+
+        </#if>
+    </div>
+</@p.page>
