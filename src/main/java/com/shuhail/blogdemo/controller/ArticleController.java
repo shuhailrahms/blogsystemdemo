@@ -35,6 +35,10 @@ public class ArticleController {
                         @RequestParam(required = false, value = "q") String q,
                         @RequestParam(required = false, value = "page") Integer page,
                         @RequestParam(required = false, value = "size") Integer size) {
+
+        page = (page == null ) ? 0 : page;
+        size = (size == null ) ? 20 : size;
+
         if (q == null) {
             model.addAttribute("articles", articleService.getAll(PageRequest.of(page, size)));
         } else {
@@ -100,6 +104,6 @@ public class ArticleController {
         }
         articleService.save(article);
 
-        return "redirect:/article/show" + article.getLink();
+        return "redirect:/article/show/" + article.getLink();
     }
 }

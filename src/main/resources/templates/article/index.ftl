@@ -1,4 +1,4 @@
-<#import "../common/standardPage.ftl" as p>
+    <#import "../common/standardPage.ftl" as p>
 
 <@p.page title="Posts">
         <!-- Post Content Column -->

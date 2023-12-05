@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 public class UserService {
     private final UserRepository userRepository;
 
-    @Autowired
     public UserService(UserRepository userRepository){
         this.userRepository = userRepository;
     }
@@ -19,7 +18,7 @@ public class UserService {
     }
 
     public User getByUsername(String username) {
-        return userRepository.findByUserName(username);
+        return userRepository.findByUsername(username);
     }
 
     public void deleteAll() {
